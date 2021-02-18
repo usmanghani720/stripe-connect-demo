@@ -14,4 +14,8 @@ class PaymentsController < ApplicationController
   def thanks
   end
 
+  def error
+
+  end
+
 end

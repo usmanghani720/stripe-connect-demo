@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'payments/new'
   get 'payment-thanks', to: 'payments#thanks', as: 'payment_thanks'
+  get 'payment-error', to: 'payments#error', as: 'payment_error'
   resources :charges, only: [:new, :create]
   get 'thanks', to: 'charges#thanks', as: 'thanks'
   get "stripe/connect", to: "stripe#connect", as: :stripe_connect
