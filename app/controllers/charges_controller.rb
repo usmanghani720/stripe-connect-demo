@@ -18,7 +18,20 @@ class ChargesController < ApplicationController
           rescue Stripe::InvalidRequestError => e
             flash[:error] = e.message
             redirect_to payment_error_path
-
+          rescue Stripe::RateLimitError => e
+            flash[:error] = e.message
+            redirect_to payment_error_path
+          rescue Stripe::AuthenticationError => e
+            flash[:error] = e.message
+            redirect_to payment_error_path
+          rescue Stripe::APIConnectionError => e
+            flash[:error] = e.message
+            redirect_to payment_error_path
+          rescue Stripe::StripeError => e
+            flash[:error] = e.message
+            redirect_to payment_error_path
+          rescue => e
+            redirect_to payment_error_path
         end
       end
     end
